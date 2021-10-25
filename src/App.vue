@@ -1,26 +1,32 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <app-sidebar></app-sidebar>
+  <div class="container">
+    <app-button></app-button>
+    <app-comments></app-comments>
+    <app-loader></app-loader>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AppSidebar from './components/AppSidebar.vue'
+import AppLoader from './components/AppLoader.vue'
+import AppComments from './components/AppComments.vue'
+import AppButton from './components/AppButton.vue'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  components: {AppSidebar, AppLoader, AppComments, AppButton}
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  .avatar {
+    display: flex;
+    justify-content: center;
+  }
+
+  .avatar img {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+  }
 </style>
