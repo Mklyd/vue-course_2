@@ -1,20 +1,34 @@
 <template>
-  <app-sidebar></app-sidebar>
+  <div class="container column">
+    <app-form></app-form>
+    <app-part
+    :blocks="blocks"
+    ></app-part>
+  </div>
   <div class="container">
-    <app-button></app-button>
     <app-comments></app-comments>
     <app-loader></app-loader>
   </div>
 </template>
 
 <script>
-import AppSidebar from './components/AppSidebar.vue'
-import AppLoader from './components/AppLoader.vue'
+import AppForm from './components/AppForm'
+import AppPart from './components/AppPart'
 import AppComments from './components/AppComments.vue'
-import AppButton from './components/AppButton.vue'
+import AppLoader from './components/AppLoader.vue'
 
 export default {
-  components: {AppSidebar, AppLoader, AppComments, AppButton}
+  data() {
+    return {
+      blocks: []
+    }
+  },
+  methods: {
+    addBlock(block) {
+      return this.blocks.push(block)
+    }
+  },
+  components: {AppForm,AppPart,  AppComments, AppLoader}
 }
 </script>
 

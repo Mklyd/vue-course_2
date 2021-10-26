@@ -1,4 +1,7 @@
 <template>
+    <p>
+      <button class="btn primary">Загрузить комментарии</button>
+    </p>
     <div class="card">
       <h2>Комментарии</h2>
       <ul class="list">
