@@ -1,6 +1,6 @@
 <template>
-    <form class="card card-w30">
-      <div class="form-control">
+    <form class="card card-w30" @submit.prevent="submit">
+      <div class="form-control" >
         <label for="type">Тип блока</label>
         <select id="type" v-model="type">
           <option value="title">Заголовок</option>
@@ -15,7 +15,7 @@
         <textarea v-model="value" id="value"></textarea>
       </div>
 
-      <button class="btn primary" :disabled="!isValid">Добавить</button>
+      <button class="btn primary" :disabled="!isValid" type="submit">Добавить</button>
     </form>
 </template>
 
@@ -24,13 +24,21 @@
 export default {
     data() {
         return {
-            title: String,
+            type: 'title',
+            
+
             value: ''
         }
     },
     computed: {
         isValid() {
             return this.value.length > 3
+        }
+    },
+    methods: {
+        submit() {
+            console.log(this.value),
+            console.log('submit')
         }
     }
   
