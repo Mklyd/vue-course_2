@@ -18,10 +18,12 @@ import AppLoader from './components/AppLoader.vue'
 export default {
   data() {
     return {
-      blocks: []
+      blocks: [],
+      
     }
   },
   methods: {
+
     addBlock(block) {
       this.blocks.push(block)
     }
