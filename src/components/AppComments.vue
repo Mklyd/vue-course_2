@@ -1,6 +1,6 @@
 <template>
     <p>
-      <button class="btn primary" @click="loadComments">Загрузить комментарии</button>
+      <button class="btn primary" @click="$emit('load')">Загрузить комментарии</button>
     </p>
     <div class="card">
       <h2>Комментарии</h2>
@@ -18,20 +18,8 @@
 <script>
 
 export default {
-  data() {
-    return {
-      comments: [],
-      id: Number,
-    }
-  },
-  methods: {
-    loadComments() {
-      let json = JSON.stringify('https://jsonplaceholder.typicode.com/comments?_limit=42 ');
-      this.comments = JSON.parse(json)
-      console.log(this.id)
-      console.log(this.comments)
-    },
-  }
+  emits: ['load'],
+  props: ['comments'],
 }
 </script>
 

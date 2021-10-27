@@ -5,7 +5,10 @@
   </div>
   <div class="container">
     <AppLoader />
-    <AppComments />
+    <AppComments 
+      :comments="comments"
+      @load="loadComments"
+    />
   </div>
 </template>
 
@@ -15,15 +18,27 @@ import AppPart from './components/AppPart'
 import AppComments from './components/AppComments.vue'
 import AppLoader from './components/AppLoader.vue'
 
+import axios from 'axios'
+
 export default {
   data() {
     return {
       blocks: [],
-      
+      comments: []
     }
   },
   methods: {
-
+    async loadComments() {
+      const { data} = await axios.get('https://jsonplaceholder.typicode.com/comments?_limit=42')
+      console.log(data)
+      const result = Object.keys(data).map(key => {
+        return {
+          id: key,
+          ...data[key]
+        }
+      })
+      this.comments = result
+    },
     addBlock(block) {
       this.blocks.push(block)
     }
