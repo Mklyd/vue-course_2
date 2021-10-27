@@ -3,7 +3,7 @@
       <div class="form-control" >
         <label for="type">Тип блока</label>
         <select id="type" v-model="type">
-          <option value="title">Заголовок</option>
+          <option value="title" >Заголовок</option>
           <option value="subtitle">Подзаголовок</option>
           <option value="avatar">Аватар</option>
           <option value="text">Текст</option>
@@ -15,13 +15,14 @@
         <textarea v-model="value" id="value"></textarea>
       </div>
 
-      <button class="btn primary" :disabled="!isValid" type="submit">Добавить</button>
+      <button class="btn primary" :disabled="!isValid">Добавить</button>
     </form>
 </template>
 
 <script>
 
 export default {
+  emits: ['block-added'],
     data() {
         return {
             type: 'title',
@@ -34,10 +35,15 @@ export default {
         }
     },
     methods: {
-        submit() {
-            console.log(this.value),
-            console.log('submit')
-        }
+      submit() {
+        this.$emit('block-added', {
+          type: this.type,
+          value: this.value,
+        })
+
+      this.value = ''
+      this.type = 'title'
+    }
     }
   
 }

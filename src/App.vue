@@ -1,13 +1,11 @@
 <template>
   <div class="container column">
-    <app-form></app-form>
-    <app-part
-    :blocks="blocks"
-    ></app-part>
+    <AppForm @block-added="addBlock" />
+    <AppPart :blocks="blocks" />
   </div>
   <div class="container">
-    <app-comments></app-comments>
-    <app-loader></app-loader>
+    <AppLoader />
+    <AppComments />
   </div>
 </template>
 
@@ -25,10 +23,10 @@ export default {
   },
   methods: {
     addBlock(block) {
-      return this.blocks.push(block)
+      this.blocks.push(block)
     }
   },
-  components: {AppForm,AppPart,  AppComments, AppLoader}
+  components: {AppForm, AppPart,  AppComments, AppLoader}
 }
 </script>
 
